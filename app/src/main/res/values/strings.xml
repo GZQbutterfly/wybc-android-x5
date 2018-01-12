@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">学惠精选zzzzz</string>
-    <string name="more">更多</string>
+    <string name="app_name">wybc-android-x5</string>
+    <!--<string name="app_name">学惠精选</string>-->
+    <string name="app_path">http://qaservice.365bencao.cn</string>
+
+
+    <string name="text_back">返回</string>
+    <string name="text_home">首页</string>
 </resources>

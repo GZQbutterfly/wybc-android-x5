@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#fff"
+    android:paddingTop="25dp"
+    >
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ellipsize="marquee"
+        android:gravity="center_horizontal|center"
+        android:singleLine="true"
+        android:text="@string/text_home"
+        android:textColor="#333"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button_backward"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#fff"
+        android:drawableLeft="@drawable/theme_toolbar_btn_back_fg_normal0"
+        android:drawablePadding="1dp"
+        android:drawableStart="@drawable/theme_toolbar_btn_back_fg_normal0"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:onClick="onClick"
+        android:paddingEnd="1dp"
+        android:paddingLeft="30dp"
+        android:paddingStart="1dp"
+        android:singleLine="true"
+        android:text="@string/text_back"
+        android:textColor="#333"
+        android:textSize="18sp"
+        android:visibility="visible" />
+
+    <!--<Button-->
+        <!--android:id="@+id/button_more"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:background="#fff"-->
+        <!--android:ellipsize="start"-->
+        <!--android:gravity="right"-->
+        <!--android:onClick="onClick"-->
+        <!--android:paddingRight="10dp"-->
+        <!--android:paddingBottom="5dp"-->
+        <!--android:singleLine="true"-->
+
+        <!--android:text="..."-->
+        <!--android:textColor="#333"-->
+        <!--android:textSize="18sp"-->
+        <!--android:visibility="visible" />-->
+
+
+
+
+</RelativeLayout>
