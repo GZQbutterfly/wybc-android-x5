@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -22,12 +23,15 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends TitleActivity {
     private WebView view;
-    private final String APP_PATH = "http://qaservice.365bencao.cn";
+    private final String APP_PATH = "http://qaservice.365bencao.cn/lead";
     private final String ORIGIN_PATH = "qaservice.365bencao.cn";
 
     @Override
@@ -56,6 +60,7 @@ public class MainActivity extends TitleActivity {
         view = (WebView) findViewById(R.id.forum_context);
         setWebView(view);
         view.loadUrl(APP_PATH);
+
         view.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -63,22 +68,24 @@ public class MainActivity extends TitleActivity {
                     Toast.makeText(MainActivity.this, "网络连接不可用，请检查网络重试", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-                if (url.contains("redirect_url") || url.contains("weixin://wap/pay?") || url.contains("wx.tenpay.com")){
+                if (url.contains("redirect_url") || url.contains("weixin://wap/pay?") || url.contains("wx.tenpay.com")) {
                     // 微信支付
-//                    Map<String, String> extraHeaders = new HashMap<String, String>();
-//                    extraHeaders.put("Referer", "http://************.com");
-//                    view.loadUrl(url, extraHeaders);
-                     startAlipayActivity(url);
-                }else if (url.contains("_pay=alipay") || url.contains("alipay")){
+
+                    try {
+                        Toast.makeText(MainActivity.this, URLDecoder.decode(url, "utf-8"), Toast.LENGTH_SHORT).show();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                } else if (url.contains("_pay=alipay") || url.contains("alipay")) {
                     // 支付宝支付
                     startAlipayActivity(url);
                     return true;
                 } else if (!url.contains("http")) {
-                    //view.loadUrl(APP_PATH + "/404");
+                    view.loadUrl(APP_PATH + "/404");
                     return false;
-                } else {
-                    view.loadUrl(url);
                 }
+                view.loadUrl(url);
+
                 return true;
             }
         });
